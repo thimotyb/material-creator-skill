@@ -14,6 +14,7 @@ Copy this file per new book, then execute top-down.
 - [ ] Create module list from syllabus/source files
 - [ ] Map `chXX.docx` -> `MXX` module pages
 - [ ] Confirm base style (tone, depth, summary level)
+- [ ] Select theme preset (`light|dark|colorful|high-contrast|warm`)
 - [ ] Confirm publication target (GitHub Pages repo)
 
 ## Phase 2 - Build Modules
@@ -44,6 +45,8 @@ Repeat for each module:
 - [ ] Image zoom works full browser and closes on click
 - [ ] Back-to-top works
 - [ ] M09 (or latest module) loads CSS correctly
+- [ ] Selected theme is applied consistently
+- [ ] Theme contrast/readability is acceptable
 
 ## Phase 5 - Publish
 - [ ] Run publish script to public repo
@@ -54,4 +57,3 @@ Repeat for each module:
 - [ ] 
 - [ ] 
 - [ ] 
-

@@ -13,6 +13,7 @@ Use this workflow for every edit request.
 - Preserve internal links and navigation.
 - Write concise, neutral English.
 - If request conflicts with previous style rules, apply latest explicit user instruction.
+- Keep selected theme consistent (`light|dark|colorful|high-contrast|warm`).
 
 ## 3) Figure Handling
 - Place figures in `site/assets/images/chXX/`.
@@ -24,6 +25,7 @@ Use this workflow for every edit request.
 - Check target sentence/section exists after edit.
 - Check no broken HTML around modified area.
 - Check links and image references with `rg`.
+- Check theme variables exist and are coherent with selected preset.
 - Ensure request is fully applied before stopping.
 
 ## 5) Publish
@@ -35,4 +37,3 @@ Use this workflow for every edit request.
 - Search text: `rg -n "text" site/chapters/chapter-*.html`
 - Verify links/images: `rg -n "chapter-08|fig-08|https://..." site/index.html site/chapters/*.html`
 - Publish: `scripts/publish-site.sh <public-repo-url> main`
-

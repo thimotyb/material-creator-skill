@@ -12,6 +12,7 @@ Create a study-ready website in English from chapter `.docx` files in `resources
 - Home page with modules, labs, bibliography, sitography
 - One HTML page per module under `site/chapters/`
 - Assets under `site/assets/` (CSS, JS, images)
+- Theme system with preset selection
 
 ## Content Rules
 - Language: English only.
@@ -42,6 +43,17 @@ Create a study-ready website in English from chapter `.docx` files in `resources
 - Readable layout and pleasant CSS.
 - Minimal dependencies, GitHub Pages compatible.
 
+## Theme Rules
+- Support at least 4 predefined themes (recommended 5):
+  - `light`
+  - `dark`
+  - `colorful`
+  - `high-contrast`
+  - `warm` (or `minimal`)
+- Use CSS variables for theme tokens (background, surface, text, accent, border).
+- Keep one active default theme per course; default is `light` unless explicitly changed.
+- Ensure accessibility and readability across all presets.
+
 ## Home Page Rules
 - Module index with links.
 - Labs section with title + description + links.
@@ -54,4 +66,3 @@ Create a study-ready website in English from chapter `.docx` files in `resources
 - No Italian text in generated English pages.
 - No references to book internal structure unless required by learning flow.
 - Module nav chain is correct (`prev/current/next`).
-

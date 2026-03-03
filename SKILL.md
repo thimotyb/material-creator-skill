@@ -22,6 +22,7 @@ Use this skill when the user asks to:
 - numbered captions: `MXX.YY - <meaningful title>`
 - key takeaways box at end of each module
 - updated home page references/labs when requested
+- selectable visual theme presets (minimum 4, recommended 5)
 
 ## Hard Rules
 1. Remove structural references such as:
@@ -32,6 +33,22 @@ Use this skill when the user asks to:
 3. Keep tone neutral, concise, study-oriented (not conversational).
 4. Keep navigation coherent (`prev/current/next`).
 5. If text is unclear or truncated, check original `resources/chXX.docx` before rewriting.
+6. Support a predefined theme choice for the whole site.
+
+## Theme Presets
+Always support these presets:
+- `light`
+- `dark`
+- `colorful`
+- `high-contrast`
+- `warm` (optional replacement: `minimal`)
+
+## Theme Application Rules
+1. Ask/select one preset at project setup (default: `light`).
+2. Implement theme via CSS variables (not per-element hardcoded colors).
+3. Keep readability first: body text contrast and link contrast must remain high.
+4. Keep layout and navigation identical across themes.
+5. If no preference is given, keep `light` and document available alternatives.
 
 ## Editing Workflow
 1. Locate target text/section in HTML.
@@ -49,4 +66,3 @@ Use this skill when the user asks to:
 - `rg -n "text to fix" site/chapters/chapter-*.html`
 - `rg -n "in this section|in this book|resources" site/chapters/chapter-*.html`
 - `rg -n "M[0-9]{2}\\.[0-9]{2}" site/chapters/chapter-*.html`
-

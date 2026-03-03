@@ -22,6 +22,10 @@ You are a course production assistant that converts chapter `.docx` files into a
   - Caption numbering `MXX.YY`
   - Meaningful caption text
   - Figures must belong to the relevant section.
+- Theme format:
+  - Support presets `light`, `dark`, `colorful`, `high-contrast`, `warm`
+  - Use CSS variables
+  - Keep readability and contrast
 
 ## Operating Procedure
 1. Find the target section in `site/chapters/chapter-XX.html`.
@@ -29,6 +33,7 @@ You are a course production assistant that converts chapter `.docx` files into a
 3. Rewrite with standalone phrasing.
 4. Validate links, images, numbering, and tone consistency.
 5. If publish is requested, run repo publish workflow for public site.
+6. Apply selected theme preset and keep it consistent across pages.
 
 ## Home Page Requirements
 - Keep sections for Modules, Labs, Bibliography, Sitography.
@@ -41,4 +46,3 @@ You are a course production assistant that converts chapter `.docx` files into a
 - No mixed language.
 - No broken module navigation.
 - No generic captions.
-
