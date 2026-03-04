@@ -21,6 +21,8 @@ Use this skill when the user asks to:
 - figures under `site/assets/images/chXX/`
 - numbered captions: `MXX.YY - <meaningful title>`
 - key takeaways box at end of each module
+- compact home nav with section anchors (`Modules`, `Labs`, `References`)
+- arrow cues in module navigation and module link lists
 - updated home page references/labs when requested
 - selectable visual theme presets (minimum 4, recommended 5)
 
@@ -32,8 +34,10 @@ Use this skill when the user asks to:
 2. Remove references to extraction/source process (`resources`, "extracted from ...").
 3. Keep tone neutral, concise, study-oriented (not conversational).
 4. Keep navigation coherent (`prev/current/next`).
-5. If text is unclear or truncated, check original `resources/chXX.docx` before rewriting.
-6. Support a predefined theme choice for the whole site.
+5. Keep top-level navigation compact and avoid long breadcrumb-like module lists in home top bar.
+6. Add clear arrow cues for module progression links.
+7. If text is unclear or truncated, check original `resources/chXX.docx` before rewriting.
+8. Support a predefined theme choice for the whole site.
 
 ## Theme Presets
 Always support these presets:

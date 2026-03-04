@@ -39,6 +39,8 @@ Create a study-ready website in English from chapter `.docx` files in `resources
 
 ## UX Rules
 - Full HTML navigation between modules.
+- Keep home top navigation compact: use section anchors (`Modules`, `Labs`, `References`) instead of listing all modules in the top bar.
+- Add arrow cues in module navigation and module link lists to make progression explicit.
 - Back-to-top button on pages.
 - Readable layout and pleasant CSS.
 - Minimal dependencies, GitHub Pages compatible.
