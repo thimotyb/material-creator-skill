@@ -19,7 +19,8 @@ Use this skill when the user asks to:
 - English-only content
 - one module per file: `site/chapters/chapter-XX.html`
 - figures under `site/assets/images/chXX/`
-- numbered captions: `MXX.YY - <meaningful title>`
+- numbered captions: `MXX.YY - Figure N: <original source caption>`
+- preserve source figure-to-caption mapping exactly (no swapped captions)
 - key takeaways box at end of each module
 - compact home nav with section anchors (`Modules`, `Labs`, `References`)
 - arrow cues in module navigation and module link lists
@@ -33,11 +34,12 @@ Use this skill when the user asks to:
    - "as discussed earlier"
 2. Remove references to extraction/source process (`resources`, "extracted from ...").
 3. Keep tone neutral, concise, study-oriented (not conversational).
-4. Keep navigation coherent (`prev/current/next`).
-5. Keep top-level navigation compact and avoid long breadcrumb-like module lists in home top bar.
-6. Add clear arrow cues for module progression links.
-7. If text is unclear or truncated, check original `resources/chXX.docx` before rewriting.
-8. Support a predefined theme choice for the whole site.
+4. Keep summaries light: preserve enough explanatory depth for study use.
+5. Keep navigation coherent (`prev/current/next`).
+6. Keep top-level navigation compact and avoid long breadcrumb-like module lists in home top bar.
+7. Add clear arrow cues for module progression links.
+8. If text is unclear or truncated, check original `resources/chXX.docx` before rewriting.
+9. Support a predefined theme choice for the whole site.
 
 ## Theme Presets
 Always support these presets:
@@ -61,6 +63,8 @@ Always support these presets:
 4. Validate:
    - no broken sentence
    - no generic image captions
+   - captions match original source figure labels and wording
+   - no figure/caption mismatches
    - no Italian in English modules
    - no broken links/images
 5. Publish:
