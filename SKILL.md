@@ -40,6 +40,8 @@ Use this skill when the user asks to:
 7. Add clear arrow cues for module progression links.
 8. If text is unclear or truncated, check original `resources/chXX.docx` before rewriting.
 9. Support a predefined theme choice for the whole site.
+10. In body text, remove explicit numeric references to source structure (e.g., "Figure 4.2", "Chapter 3", "Section 2.1").
+11. Keep references standalone by replacing those with neutral wording ("the diagram", "related modules", "related topics").
 
 ## Theme Presets
 Always support these presets:
@@ -65,6 +67,7 @@ Always support these presets:
    - no generic image captions
    - captions match original source caption wording
    - no figure/caption mismatches
+   - no explicit "Figure N", "Chapter N", or "Section N" references in body text
    - no Italian in English modules
    - no broken links/images
 5. Publish:
@@ -74,3 +77,4 @@ Always support these presets:
 - `rg -n "text to fix" site/chapters/chapter-*.html`
 - `rg -n "in this section|in this book|resources" site/chapters/chapter-*.html`
 - `rg -n "M[0-9]{2}\\.[0-9]{2}" site/chapters/chapter-*.html`
+- `rg -n "\\b(Figure|Chapter|Section)\\s+[0-9]" site/chapters/chapter-*.html`
