@@ -19,7 +19,7 @@ Use this skill when the user asks to:
 - English-only content
 - one module per file: `site/chapters/chapter-XX.html`
 - figures under `site/assets/images/chXX/`
-- numbered captions: `MXX.YY - Figure N: <original source caption>`
+- numbered captions: `MXX.YY - <original source caption text>`
 - preserve source figure-to-caption mapping exactly (no swapped captions)
 - key takeaways box at end of each module
 - compact home nav with section anchors (`Modules`, `Labs`, `References`)
@@ -63,7 +63,7 @@ Always support these presets:
 4. Validate:
    - no broken sentence
    - no generic image captions
-   - captions match original source figure labels and wording
+   - captions match original source caption wording
    - no figure/caption mismatches
    - no Italian in English modules
    - no broken links/images
