@@ -22,6 +22,9 @@ Use this skill when the user asks to:
 - numbered captions: `MXX.YY - <original source caption text>`
 - preserve source figure-to-caption mapping exactly (no swapped captions)
 - key takeaways box at end of each module
+- two-level module structure is mandatory:
+  - Level 1 main sections (`1`, `2`, `3`, ...)
+  - Level 2 subsections inside each main section (`1.1`, `1.2`, ...)
 - compact home nav with section anchors (`Modules`, `Labs`, `References`)
 - arrow cues in module navigation and module link lists
 - updated home page references/labs when requested
@@ -45,6 +48,7 @@ Use this skill when the user asks to:
 10. In body text, remove explicit numeric references to source structure (e.g., "Figure 4.2", "Chapter 3", "Section 2.1").
 11. Keep references standalone by replacing those with neutral wording ("the diagram", "related modules", "related topics").
 12. Print support must be local-only (no external libraries) and GitHub Pages compatible.
+13. Do not keep all content at one flat section level; each module must expose both Level 1 and Level 2 structure.
 
 ## Theme Presets
 Always support these presets:
@@ -73,6 +77,7 @@ Always support these presets:
    - no explicit "Figure N", "Chapter N", or "Section N" references in body text
    - no Italian in English modules
    - no broken links/images
+   - module uses two-level structure (`1` and `1.1`) instead of flat sections only
    - print button present and working on every module page
    - print stylesheet hides navigation controls and preserves section/figure readability
 5. Publish:

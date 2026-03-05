@@ -23,7 +23,9 @@ Create a study-ready website in English from chapter `.docx` files in `resources
 - Summarize lightly, but keep enough detail for study.
 - Every module must include:
   - Title with module number prefix (`MXX - <Title>`)
-  - Numbered sections (`S01`, `S02`, ...)
+  - Two-level numbered structure:
+    - Level 1 main sections (`1`, `2`, `3`, ...)
+    - Level 2 subsections (`1.1`, `1.2`, `2.1`, ...)
   - Meaningful short section titles (not first words of paragraph)
   - A `Key takeaways` box at the end
 
@@ -71,5 +73,6 @@ Create a study-ready website in English from chapter `.docx` files in `resources
 - No Italian text in generated English pages.
 - No references to book internal structure unless required by learning flow.
 - Module nav chain is correct (`prev/current/next`).
+- Module structure has both levels (`1` and `1.1`) and is not flat.
 - Print button works on each module.
 - Printed output keeps section headings/figures readable and excludes UI controls (nav, back-to-top, print button).
