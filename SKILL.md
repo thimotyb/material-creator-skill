@@ -30,6 +30,7 @@ Use this skill when the user asks to:
 - in-module structure tree with clear hierarchy indentation (`h2` parent, indented `h3` children)
 - in-module structure tree active-state highlight tied to current reading section
 - anchor jump behavior that preserves heading visibility below sticky header/nav (sufficient vertical offset)
+- in-module structure tree placed in an internal left frame (not fixed overlay on viewport)
 - updated home page references/labs when requested
 - selectable visual theme presets (minimum 4, recommended 5)
 - print icon/button on each module page (local JavaScript, browser print dialog)
@@ -55,6 +56,7 @@ Use this skill when the user asks to:
 14. Structure navigation panel must visually indent second-level items under first-level items.
 15. Structure navigation panel must highlight the active section during scroll/reading.
 16. Anchor jumps must not land with headings hidden under sticky top UI; enforce a consistent top offset.
+17. Structure panel must be part of the page layout (left frame) and must not overlap breadcrumb/header.
 
 ## Theme Presets
 Always support these presets:
@@ -87,6 +89,7 @@ Always support these presets:
    - structure tree shows indented level-2 items under level-1
    - structure tree highlights the active section while scrolling
    - anchor jumps keep section titles fully visible (no top clipping)
+   - structure tree is an internal left frame, with no overlap on breadcrumb/header
    - print button present and working on every module page
    - print stylesheet hides navigation controls and preserves section/figure readability
 5. Publish:

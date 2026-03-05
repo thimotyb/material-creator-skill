@@ -46,6 +46,8 @@ Create a study-ready website in English from chapter `.docx` files in `resources
 - In-module structure tree must indent level-2 entries under their level-1 parent.
 - In-module structure tree must highlight the section currently in view while scrolling.
 - Anchor jumps from structure/navigation must keep headings fully visible below sticky UI (use adequate vertical offset).
+- Structure tree must be rendered as an internal left frame in the content layout (not as fixed overlay).
+- Structure tree frame must never overlap breadcrumb/header/top navigation.
 - Back-to-top button on pages.
 - Print button/icon on every module page.
 - Print behavior: click print button => open browser print dialog (`window.print()` via local JavaScript).
@@ -80,5 +82,6 @@ Create a study-ready website in English from chapter `.docx` files in `resources
 - In-module structure tree shows visual indentation for level 2 under level 1.
 - In-module structure tree highlights the active section while reading.
 - Anchor jumps do not hide headings under sticky navigation/header.
+- Structure tree is in an internal left frame and does not overlap breadcrumb/header.
 - Print button works on each module.
 - Printed output keeps section headings/figures readable and excludes UI controls (nav, back-to-top, print button).
