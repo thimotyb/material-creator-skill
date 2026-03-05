@@ -6,7 +6,7 @@ Reusable skill pack to create and maintain study-ready course websites from chap
 - Converts chapter files (`resources/chXX.docx`) into structured HTML modules.
 - Enforces a consistent course format:
   - module numbering (`MXX`)
-  - section numbering (`SXX`)
+  - two-level section numbering (`1`, `1.1`)
   - figure numbering (`MXX.YY`)
   - `Key takeaways` box at end of each module
 - Improves text quality (standalone phrasing, neutral study tone, no conversational fillers).
@@ -16,6 +16,7 @@ Reusable skill pack to create and maintain study-ready course websites from chap
   - `light`, `dark`, `colorful`, `high-contrast`, `warm`
 - Adds a print action on each module page (`Print` icon/button) using local JavaScript.
 - Applies print-specific CSS so printed/PDF output is clean and readable.
+- Requires a structure tree panel with indented second-level items and active-section highlighting while scrolling.
 
 ## Repository contents
 - `SKILL.md` - Codex skill behavior

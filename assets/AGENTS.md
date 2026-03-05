@@ -11,6 +11,8 @@ Use this workflow for every edit request.
 - Keep existing HTML structure and CSS classes.
 - Keep section numbering and figure numbering format.
 - Preserve internal links and navigation.
+- Keep structure tree hierarchy clear: level-2 items must be indented under level-1.
+- Keep structure tree synced with reading position by highlighting current section.
 - Write concise, neutral English.
 - If request conflicts with previous style rules, apply latest explicit user instruction.
 - Keep selected theme consistent (`light|dark|colorful|high-contrast|warm`).
@@ -27,6 +29,8 @@ Use this workflow for every edit request.
 - Check links and image references with `rg`.
 - Check theme variables exist and are coherent with selected preset.
 - Check module structure has two levels (`1` main sections and `1.1` subsections).
+- Check structure tree indentation clearly separates level-2 from level-1.
+- Check structure tree highlights active section while scrolling.
 - Check print button exists in each module and opens browser print dialog.
 - Check `@media print` styles hide navigation controls and preserve readability.
 - Ensure request is fully applied before stopping.

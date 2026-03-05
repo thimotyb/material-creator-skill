@@ -27,6 +27,9 @@ Use this skill when the user asks to:
   - Level 2 subsections inside each main section (`1.1`, `1.2`, ...)
 - compact home nav with section anchors (`Modules`, `Labs`, `References`)
 - arrow cues in module navigation and module link lists
+- in-module structure tree with clear hierarchy indentation (`h2` parent, indented `h3` children)
+- in-module structure tree active-state highlight tied to current reading section
+- anchor jump behavior that preserves heading visibility below sticky header/nav (sufficient vertical offset)
 - updated home page references/labs when requested
 - selectable visual theme presets (minimum 4, recommended 5)
 - print icon/button on each module page (local JavaScript, browser print dialog)
@@ -49,6 +52,9 @@ Use this skill when the user asks to:
 11. Keep references standalone by replacing those with neutral wording ("the diagram", "related modules", "related topics").
 12. Print support must be local-only (no external libraries) and GitHub Pages compatible.
 13. Do not keep all content at one flat section level; each module must expose both Level 1 and Level 2 structure.
+14. Structure navigation panel must visually indent second-level items under first-level items.
+15. Structure navigation panel must highlight the active section during scroll/reading.
+16. Anchor jumps must not land with headings hidden under sticky top UI; enforce a consistent top offset.
 
 ## Theme Presets
 Always support these presets:
@@ -78,6 +84,9 @@ Always support these presets:
    - no Italian in English modules
    - no broken links/images
    - module uses two-level structure (`1` and `1.1`) instead of flat sections only
+   - structure tree shows indented level-2 items under level-1
+   - structure tree highlights the active section while scrolling
+   - anchor jumps keep section titles fully visible (no top clipping)
    - print button present and working on every module page
    - print stylesheet hides navigation controls and preserves section/figure readability
 5. Publish:

@@ -29,6 +29,8 @@ Repeat for each module:
 - [ ] Add meaningful figure captions `MXX.YY - <caption>`
 - [ ] Add `Key takeaways` box at module end
 - [ ] Validate navigation prev/current/next
+- [ ] Validate in-module structure tree: level-2 items are indented under level-1
+- [ ] Validate in-module structure tree: active section is highlighted while scrolling
 
 ## Phase 3 - Home and References
 - [ ] Update module links in `site/index.html`
@@ -44,6 +46,8 @@ Repeat for each module:
 - [ ] No references to `resources` extraction
 - [ ] Image zoom works full browser and closes on click
 - [ ] Back-to-top works
+- [ ] Structure tree active highlight tracks current reading section
+- [ ] Structure tree level-2 indentation is visually clear
 - [ ] M09 (or latest module) loads CSS correctly
 - [ ] Selected theme is applied consistently
 - [ ] Theme contrast/readability is acceptable
