@@ -42,6 +42,9 @@ Create a study-ready website in English from chapter `.docx` files in `resources
 - Keep home top navigation compact: use section anchors (`Modules`, `Labs`, `References`) instead of listing all modules in the top bar.
 - Add arrow cues in module navigation and module link lists to make progression explicit.
 - Back-to-top button on pages.
+- Print button/icon on every module page.
+- Print behavior: click print button => open browser print dialog (`window.print()` via local JavaScript).
+- Add print-optimized CSS (`@media print`) to hide navigation controls and keep printed content readable.
 - Readable layout and pleasant CSS.
 - Minimal dependencies, GitHub Pages compatible.
 
@@ -68,3 +71,5 @@ Create a study-ready website in English from chapter `.docx` files in `resources
 - No Italian text in generated English pages.
 - No references to book internal structure unless required by learning flow.
 - Module nav chain is correct (`prev/current/next`).
+- Print button works on each module.
+- Printed output keeps section headings/figures readable and excludes UI controls (nav, back-to-top, print button).

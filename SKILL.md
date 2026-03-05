@@ -26,6 +26,8 @@ Use this skill when the user asks to:
 - arrow cues in module navigation and module link lists
 - updated home page references/labs when requested
 - selectable visual theme presets (minimum 4, recommended 5)
+- print icon/button on each module page (local JavaScript, browser print dialog)
+- print-optimized CSS for clean PDF/paper output
 
 ## Hard Rules
 1. Remove structural references such as:
@@ -42,6 +44,7 @@ Use this skill when the user asks to:
 9. Support a predefined theme choice for the whole site.
 10. In body text, remove explicit numeric references to source structure (e.g., "Figure 4.2", "Chapter 3", "Section 2.1").
 11. Keep references standalone by replacing those with neutral wording ("the diagram", "related modules", "related topics").
+12. Print support must be local-only (no external libraries) and GitHub Pages compatible.
 
 ## Theme Presets
 Always support these presets:
@@ -70,6 +73,8 @@ Always support these presets:
    - no explicit "Figure N", "Chapter N", or "Section N" references in body text
    - no Italian in English modules
    - no broken links/images
+   - print button present and working on every module page
+   - print stylesheet hides navigation controls and preserves section/figure readability
 5. Publish:
    - `scripts/publish-site.sh https://github.com/<USER>/<PUBLIC-SITE-REPO>.git main`
 

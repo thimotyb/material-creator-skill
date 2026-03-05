@@ -14,6 +14,8 @@ Reusable skill pack to create and maintain study-ready course websites from chap
 - Includes quality gates and publishing workflow for GitHub Pages.
 - Supports predefined visual themes:
   - `light`, `dark`, `colorful`, `high-contrast`, `warm`
+- Adds a print action on each module page (`Print` icon/button) using local JavaScript.
+- Applies print-specific CSS so printed/PDF output is clean and readable.
 
 ## Repository contents
 - `SKILL.md` - Codex skill behavior
