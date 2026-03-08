@@ -155,7 +155,7 @@ Use the bundled assets instead of re-inventing the workflow:
 - `assets/TASK.md` for project tracking
 - `assets/THEMES.md` for reusable theme presets
 - `scripts/init_course_project.py` to bootstrap the default `resources/` + `site/` course project structure
-- `scripts/create_module_stub.py` to add a new module page stub under `site/chapters/`
+- `scripts/create_module_stub.py` to add a new module page stub under `site/chapters/` and update `course-structure.md`
 
 Load only the file(s) needed for the task.
 

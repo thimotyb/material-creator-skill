@@ -56,6 +56,9 @@ MODULE_TEMPLATE = """<!DOCTYPE html>
 </html>
 """
 
+MODULES_HEADER = "| Module | Title | Output Artifact | Source Files | Notes |"
+SOURCE_HEADER = "| Source File | Type | Used In Modules | Notes |"
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
@@ -67,8 +70,74 @@ def parse_args() -> argparse.Namespace:
         "--summary",
         default="Replace this introduction with standalone study-ready content.",
     )
+    parser.add_argument(
+        "--source-files",
+        default="",
+        help="Comma-separated source files for this module, e.g. resources/ch03.docx,resources/lab-notes.md",
+    )
+    parser.add_argument("--notes", default="", help="Notes for course-structure.md")
     parser.add_argument("--force", action="store_true", help="Overwrite existing file")
     return parser.parse_args()
+
+
+def split_csv(raw: str) -> list[str]:
+    return [part.strip() for part in raw.split(",") if part.strip()]
+
+
+def source_file_type(path: str) -> str:
+    suffix = Path(path).suffix.lower()
+    if suffix == ".docx":
+        return "chapter"
+    if suffix == ".md":
+        return "notes"
+    if suffix == ".pdf":
+        return "pdf"
+    if suffix:
+        return suffix.lstrip(".")
+    return "source"
+
+
+def upsert_markdown_row(lines: list[str], header: str, row_key: str, row: str) -> list[str]:
+    try:
+        header_index = lines.index(header)
+    except ValueError:
+        return lines
+
+    insert_index = header_index + 2
+    while insert_index < len(lines) and lines[insert_index].startswith("|"):
+        current = lines[insert_index]
+        if current.startswith(f"| {row_key} |"):
+            lines[insert_index] = row
+            return lines
+        insert_index += 1
+
+    lines.insert(insert_index, row)
+    return lines
+
+
+def update_course_structure(
+    course_structure_path: Path,
+    module_code: str,
+    module_title: str,
+    output_artifact: str,
+    source_files: list[str],
+    notes: str,
+) -> None:
+    if not course_structure_path.exists():
+        return
+
+    lines = course_structure_path.read_text(encoding="utf-8").splitlines()
+    source_display = ", ".join(f"`{source}`" for source in source_files) if source_files else "original"
+    module_row = f"| {module_code} | {module_title} | `{output_artifact}` | {source_display} | {notes} |"
+    lines = upsert_markdown_row(lines, MODULES_HEADER, module_code, module_row)
+
+    for source_file in source_files:
+        source_row = (
+            f"| `{source_file}` | {source_file_type(source_file)} | `{module_code}` | Added by create_module_stub.py |"
+        )
+        lines = upsert_markdown_row(lines, SOURCE_HEADER, f"`{source_file}`", source_row)
+
+    course_structure_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def main() -> int:
@@ -87,6 +156,7 @@ def main() -> int:
 
     previous_label = f"M{args.module_number - 1:02d} - Previous" if args.module_number > 1 else "Previous"
     next_label = f"M{args.module_number + 1:02d} - Next"
+    source_files = split_csv(args.source_files) or [f"resources/ch{args.module_number:02d}.docx"]
 
     filename.write_text(
         MODULE_TEMPLATE.format(
@@ -98,6 +168,14 @@ def main() -> int:
             next_label=html.escape(next_label),
         ),
         encoding="utf-8",
+    )
+    update_course_structure(
+        project_root / "course-structure.md",
+        module_code=module_code,
+        module_title=html.escape(args.module_title),
+        output_artifact=f"site/chapters/chapter-{args.module_number:02d}.html",
+        source_files=source_files,
+        notes=html.escape(args.notes),
     )
 
     print(f"Created {filename}")
