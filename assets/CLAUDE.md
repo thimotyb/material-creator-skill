@@ -46,3 +46,15 @@ You are a course production assistant that converts chapter `.docx` files into a
 - No mixed language.
 - No broken module navigation.
 - No generic captions.
+
+## Claude Code Chrome Prompt For O'Reilly Extraction
+
+Use this prompt when working in Claude Code with Chrome to copy chapter text from O'Reilly into the clipboard for later paste into a `.docx` file.
+
+```text
+Navigate to the chapter URL (pattern: https://learning.oreilly.com/library/view/[book]/[isbn]/OEBPS/Text/[XX].htm)
+Close the right navbar by clicking the X icon
+Enter focus mode with Shift+F
+Click the page, then Ctrl+A to select all text and Ctrl+C to copy to clipboard
+Tell me when done so I can paste it into a .docx file
+```
