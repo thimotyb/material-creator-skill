@@ -1,61 +1,71 @@
-# Task Tracker Template (Simple)
+# Task Tracker Template
 
-Copy this file per new book, then execute top-down.
-
----
+Copy this file for each course project, then adapt the sections that matter.
 
 ## Project
-- Course name:
-- Source book/title:
+- Project name:
+- Course or learning path:
+- Audience:
+- Primary source materials:
+- Output format:
 - Date:
-- Public site repo:
+- Publication target:
 
-## Phase 1 - Setup
-- [ ] Create module list from syllabus/source files
-- [ ] Map `chXX.docx` -> `MXX` module pages
-- [ ] Confirm base style (tone, depth, summary level)
-- [ ] Select theme preset (`light|dark|colorful|high-contrast|warm`)
-- [ ] Confirm publication target (GitHub Pages repo)
+## Phase 1 - Definition
+- [ ] Confirm the target artifacts to produce or revise
+- [ ] Confirm source materials and file locations
+- [ ] Confirm language, tone, and depth
+- [ ] Confirm structural standard for modules/lessons
+- [ ] Confirm visual/theme expectations
+- [ ] Confirm publication or delivery target
 
-## Phase 2 - Build Modules
-Repeat for each module:
+## Phase 2 - Content Mapping
+- [ ] Build the module/lesson list from syllabus or source files
+- [ ] Map each source item to a destination artifact
+- [ ] Identify missing material, weak sections, or unclear extraction points
+- [ ] Confirm naming conventions for modules, sections, and assets
 
-### Module MXX
-- [ ] Extract text from `resources/chXX.docx`
-- [ ] Rewrite into standalone study text (no structural/book references)
-- [ ] Create/refresh `site/chapters/chapter-XX.html`
-- [ ] Add section numbering and section titles
-- [ ] Import and place all relevant figures
-- [ ] Add meaningful figure captions `MXX.YY - <caption>`
-- [ ] Add `Key takeaways` box at module end
-- [ ] Validate navigation prev/current/next
-- [ ] Validate in-module structure tree: level-2 items are indented under level-1
-- [ ] Validate in-module structure tree: active section is highlighted while scrolling
+## Phase 3 - Build or Revise Content
+Repeat for each target artifact:
 
-## Phase 3 - Home and References
-- [ ] Update module links in `site/index.html`
-- [ ] Update Labs section (title + description + links)
-- [ ] Update Bibliography
-- [ ] Update Sitography
-- [ ] Keep footer note present
+### Item
+- [ ] Inspect the current artifact or create it from source material
+- [ ] Recover meaning from source before rewriting when needed
+- [ ] Rewrite into standalone study-ready content
+- [ ] Apply consistent section hierarchy and titles
+- [ ] Add or correct figures, captions, examples, or supporting assets
+- [ ] Add recap, summary, or key takeaways if the project pattern expects it
+- [ ] Validate navigation, links, and local consistency
 
-## Phase 4 - QA
-- [ ] No incomplete sentences
-- [ ] No conversational filler
-- [ ] No "in this section/book" references
-- [ ] No references to `resources` extraction
-- [ ] Image zoom works full browser and closes on click
-- [ ] Back-to-top works
-- [ ] Structure tree active highlight tracks current reading section
-- [ ] Structure tree level-2 indentation is visually clear
-- [ ] M09 (or latest module) loads CSS correctly
-- [ ] Selected theme is applied consistently
-- [ ] Theme contrast/readability is acceptable
+## Phase 4 - Course-Level Consistency
+- [ ] Align terminology across modules/pages
+- [ ] Align navigation and cross-linking
+- [ ] Align references, labs, bibliography, or support sections
+- [ ] Align visual theme and layout patterns
+- [ ] Remove residual source-process wording and structural references
 
-## Phase 5 - Publish
-- [ ] Run publish script to public repo
-- [ ] Verify live URL
-- [ ] Log changes delivered
+## Phase 5 - QA
+- [ ] No incomplete or broken sentences
+- [ ] No broken links or missing assets
+- [ ] No accidental language mixing
+- [ ] No figure/caption mismatch
+- [ ] Structure is consistent across neighboring artifacts
+- [ ] Theme/layout is applied consistently
+- [ ] Output is complete and ready for delivery
+
+## Phase 6 - Publish or Deliver
+- [ ] Run the project publish/delivery workflow if required
+- [ ] Verify the final target or live URL
+- [ ] Record what changed
+
+## Default Website Variant
+
+If the project uses the current `resources/` + `site/` workflow:
+- [ ] Map `resources/chXX.docx` to module pages
+- [ ] Update `site/chapters/` outputs
+- [ ] Update `site/index.html` module/reference/lab links
+- [ ] Validate in-module navigation and structure tree
+- [ ] Validate print behavior and theme consistency
 
 ## Notes / Fix Queue
 - [ ] 

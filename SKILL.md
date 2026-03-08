@@ -1,102 +1,163 @@
-# Codex Skill: Course Builder from Book Chapters
+---
+name: material-creator-skill
+description: Create or maintain course materials with a consistent workflow, structure, tone, and quality bar. Use when the user wants to build or revise educational content such as modules, course websites, lesson pages, labs, references, or derived material from source files like DOCX, notes, syllabi, or existing HTML.
+---
 
-## Purpose
-Build and maintain a study-ready static course website from `.docx` chapter files in `resources/`.
+# Material Creator Skill
 
-## Trigger
-Use this skill when the user asks to:
-- create a course site from book chapters
-- revise module text/figures
-- improve readability/tone/navigation
-- publish updates to GitHub Pages
+Use this skill when the user wants a repeatable way to create course content "sempre allo stesso modo".
 
-## Inputs
-- `resources/chXX.docx` chapter files
-- existing site in `site/`
-- optional syllabus file in `resources/`
+This skill is intentionally broader than a single website generator. It defines a standard workflow for educational material production, while still supporting the current concrete pattern based on `resources/chXX.docx` and `site/`.
 
-## Output Contract
-- English-only content
-- one module per file: `site/chapters/chapter-XX.html`
-- figures under `site/assets/images/chXX/`
-- numbered captions: `MXX.YY - <original source caption text>`
-- preserve source figure-to-caption mapping exactly (no swapped captions)
-- key takeaways box at end of each module
-- two-level module structure is mandatory:
-  - Level 1 main sections (`1`, `2`, `3`, ...)
-  - Level 2 subsections inside each main section (`1.1`, `1.2`, ...)
-- compact home nav with section anchors (`Modules`, `Labs`, `References`)
-- arrow cues in module navigation and module link lists
-- in-module structure tree with clear hierarchy indentation (`h2` parent, indented `h3` children)
-- in-module structure tree active-state highlight tied to current reading section
-- anchor jump behavior that preserves heading visibility below sticky header/nav (sufficient vertical offset)
-- in-module structure tree placed in an internal left frame (not fixed overlay on viewport)
-- updated home page references/labs when requested
-- selectable visual theme presets (minimum 4, recommended 5)
-- print icon/button on each module page (local JavaScript, browser print dialog)
-- print-optimized CSS for clean PDF/paper output
+## Use This Skill When
 
-## Hard Rules
-1. Remove structural references such as:
-   - "in this section"
-   - "in this book"
-   - "as discussed earlier"
-2. Remove references to extraction/source process (`resources`, "extracted from ...").
-3. Keep tone neutral, concise, study-oriented (not conversational).
-4. Keep summaries light: preserve enough explanatory depth for study use.
-5. Keep navigation coherent (`prev/current/next`).
-6. Keep top-level navigation compact and avoid long breadcrumb-like module lists in home top bar.
-7. Add clear arrow cues for module progression links.
-8. If text is unclear or truncated, check original `resources/chXX.docx` before rewriting.
-9. Support a predefined theme choice for the whole site.
-10. In body text, remove explicit numeric references to source structure (e.g., "Figure 4.2", "Chapter 3", "Section 2.1").
-11. Keep references standalone by replacing those with neutral wording ("the diagram", "related modules", "related topics").
-12. Print support must be local-only (no external libraries) and GitHub Pages compatible.
-13. Do not keep all content at one flat section level; each module must expose both Level 1 and Level 2 structure.
-14. Structure navigation panel must visually indent second-level items under first-level items.
-15. Structure navigation panel must highlight the active section during scroll/reading.
-16. Anchor jumps must not land with headings hidden under sticky top UI; enforce a consistent top offset.
-17. Structure panel must be part of the page layout (left frame) and must not overlap breadcrumb/header.
+Trigger this skill when the user asks to:
+- create a new course or module from source material
+- convert chapter files, notes, or syllabus content into study-ready material
+- revise existing modules for tone, clarity, structure, navigation, or consistency
+- standardize a course website or lesson pages across modules
+- generate or refresh labs, references, summaries, or supporting course pages
+- maintain a course publishing workflow with stable formatting and quality checks
 
-## Theme Presets
-Always support these presets:
-- `light`
-- `dark`
-- `colorful`
-- `high-contrast`
-- `warm` (optional replacement: `minimal`)
+## Default Assumptions
 
-## Theme Application Rules
-1. Ask/select one preset at project setup (default: `light`).
-2. Implement theme via CSS variables (not per-element hardcoded colors).
-3. Keep readability first: body text contrast and link contrast must remain high.
-4. Keep layout and navigation identical across themes.
-5. If no preference is given, keep `light` and document available alternatives.
+Unless the user says otherwise:
+- language: English
+- tone: neutral, concise, study-oriented
+- output should be standalone and not depend on book-local wording like "in this chapter" or "as discussed earlier"
+- structure should be explicit, scannable, and consistent across modules
+- keep the workflow deterministic and reusable rather than inventing a new format each time
 
-## Editing Workflow
-1. Locate target text/section in HTML.
-2. If needed, recover full meaning from matching `.docx`.
-3. Rewrite as standalone study content.
-4. Validate:
-   - no broken sentence
-   - no generic image captions
-   - captions match original source caption wording
-   - no figure/caption mismatches
-   - no explicit "Figure N", "Chapter N", or "Section N" references in body text
-   - no Italian in English modules
-   - no broken links/images
-   - module uses two-level structure (`1` and `1.1`) instead of flat sections only
-   - structure tree shows indented level-2 items under level-1
-   - structure tree highlights the active section while scrolling
-   - anchor jumps keep section titles fully visible (no top clipping)
-   - structure tree is an internal left frame, with no overlap on breadcrumb/header
-   - print button present and working on every module page
-   - print stylesheet hides navigation controls and preserves section/figure readability
-5. Publish:
-   - `scripts/publish-site.sh https://github.com/<USER>/<PUBLIC-SITE-REPO>.git main`
+## Typical Inputs
 
-## Fast Validation Commands
-- `rg -n "text to fix" site/chapters/chapter-*.html`
-- `rg -n "in this section|in this book|resources" site/chapters/chapter-*.html`
-- `rg -n "M[0-9]{2}\\.[0-9]{2}" site/chapters/chapter-*.html`
-- `rg -n "\\b(Figure|Chapter|Section)\\s+[0-9]" site/chapters/chapter-*.html`
+Accept any combination of:
+- source chapters in `resources/` such as `resources/chXX.docx`
+- a syllabus, outline, or reading list
+- an existing course site in `site/`
+- existing module HTML, Markdown, or notes
+- explicit user requirements about audience, depth, tone, theme, and publication target
+
+## Typical Outputs
+
+Depending on the task, produce one or more of:
+- a course website under `site/`
+- one lesson or module per file, usually under `site/chapters/`
+- revised study text for modules or sections
+- labs, references, bibliography, sitography, summaries, and key takeaways
+- reusable content structure that stays coherent across the whole course
+
+When the project already uses the website pattern from this skill, keep:
+- one module per page
+- assets under `site/assets/`
+- stable navigation across modules
+- a shared theme system
+
+## Standard Workflow
+
+Follow this order unless the user asks for a smaller scoped edit.
+
+1. Understand the course context.
+   Determine audience, source material, desired outputs, constraints, and whether the task is a new build or a revision.
+
+2. Identify the target artifact.
+   Decide whether you are editing a module, building a new lesson, updating home/references/labs, or standardizing the whole course structure.
+
+3. Recover source meaning before rewriting.
+   If existing text is unclear, incomplete, or mechanically extracted, check the source files before editing.
+
+4. Rewrite into standalone learning material.
+   Remove source-structure references, keep the meaning, and present content in a way that works independently.
+
+5. Apply the course standard.
+   Keep naming, section hierarchy, navigation, captions, and UI patterns consistent with the rest of the course.
+
+6. Validate before stopping.
+   Check content integrity, structure, links, assets, and consistency with the project conventions.
+
+## Course Content Standard
+
+Apply these rules by default:
+- write for study use, not for marketing
+- prefer clarity over flair
+- avoid conversational filler
+- preserve enough detail to support learning, not just a thin summary
+- use meaningful section titles
+- keep terminology consistent within and across modules
+- remove references to extraction pipelines or file provenance unless the user explicitly wants them
+
+Replace structural references such as:
+- "in this section"
+- "in this chapter"
+- "in this book"
+- "as discussed earlier"
+
+with standalone phrasing that still makes sense when read in isolation.
+
+## Structure Standard
+
+For module-like outputs, prefer:
+- a clear module title
+- explicit section hierarchy
+- predictable navigation
+- a closing recap or key takeaways block
+
+If the project uses numbered sections, preserve and normalize them.
+If the project uses a two-level module structure, keep that pattern consistent.
+
+Do not flatten a structured module into an unstructured wall of text.
+
+## Figure and Asset Standard
+
+When the task includes figures or diagrams:
+- keep figure-to-caption mapping correct
+- use meaningful captions, never generic placeholders
+- place assets in the project's established asset structure
+- verify paths from the consuming page
+- avoid duplicating equivalent assets unnecessarily
+
+If the current course pattern uses module-based caption numbering such as `MXX.YY`, preserve it.
+
+## Website Pattern
+
+When the project follows the existing course-site layout:
+- keep the home navigation compact
+- keep module navigation coherent (`prev/current/next` where applicable)
+- preserve the in-module structure tree if present
+- ensure anchor jumps do not hide headings below sticky UI
+- keep print behavior local-only and static-host compatible
+- prefer minimal dependencies and GitHub Pages compatible solutions
+
+Theme handling should stay token-based through CSS variables. Reuse the theme presets in `assets/THEMES.md` unless the user asks for a different visual system.
+
+## Validation Checklist
+
+Before stopping, verify the relevant subset of:
+- no broken or incomplete sentences
+- no source-process references left behind
+- no broken links or missing assets
+- no accidental language mixing
+- structure is consistent with neighboring modules/pages
+- figures and captions still match
+- navigation still works
+- theme and layout remain coherent
+- requested output is complete, not partially applied
+
+## Bundled Assets
+
+Use the bundled assets instead of re-inventing the workflow:
+- `assets/AGENTS.md` for the step-by-step editing workflow
+- `assets/REQUIREMENTS.md` for the baseline website/content requirements
+- `assets/TASK.md` for project tracking
+- `assets/THEMES.md` for reusable theme presets
+
+Load only the file(s) needed for the task.
+
+## Concrete Current Variant
+
+For the current implementation pattern already captured by this skill:
+- source files often live in `resources/chXX.docx`
+- module pages often live in `site/chapters/chapter-XX.html`
+- site assets often live in `site/assets/`
+- publishing may use a GitHub Pages workflow
+
+Treat this as the default project variant, not as the only valid use of the skill.

@@ -1,46 +1,55 @@
-# Agent Instructions (Simple Course Workflow)
+# Agent Instructions
 
-Use this workflow for every edit request.
+Use this workflow for any request that creates or revises course material.
 
-## 1) Locate and Understand
-- Find module + section in `site/chapters/chapter-XX.html`.
-- If text is unclear/incomplete, check original chapter in `resources/chXX.docx`.
-- Prefer faithful meaning from source, then rewrite to clean study style.
+## 1) Understand the Task
+- Identify the target artifact: module, lesson page, course home, labs, references, summary, or full site.
+- Identify the source material: `.docx`, notes, syllabus, existing HTML, or mixed inputs.
+- Confirm user constraints when present: language, audience, depth, theme, publication target, or scope.
 
-## 2) Edit Rules
-- Keep existing HTML structure and CSS classes.
-- Keep section numbering and figure numbering format.
-- Preserve internal links and navigation.
-- Keep structure tree hierarchy clear: level-2 items must be indented under level-1.
-- Keep structure tree synced with reading position by highlighting current section.
-- Write concise, neutral English.
-- If request conflicts with previous style rules, apply latest explicit user instruction.
-- Keep selected theme consistent (`light|dark|colorful|high-contrast|warm`).
+## 2) Recover Meaning Before Editing
+- If the existing text is incomplete, unclear, or too extraction-like, inspect the original source before rewriting.
+- Prefer preserving meaning, then improving structure and readability.
+- Remove references that only make sense in the original source context.
 
-## 3) Figure Handling
-- Place figures in `site/assets/images/chXX/`.
-- Add semantic captions.
-- Ensure image paths are correct from chapter HTML.
-- Do not duplicate identical assets unnecessarily.
+## 3) Apply the Course Standard
+- Keep the output concise, neutral, and study-oriented.
+- Keep terminology and naming consistent across modules.
+- Prefer explicit section titles and visible hierarchy over long flat prose.
+- Reuse the project's established file structure and CSS/UI patterns.
+- If the request conflicts with older conventions, follow the latest explicit user instruction.
 
-## 4) Validation
-- Check target sentence/section exists after edit.
-- Check no broken HTML around modified area.
-- Check links and image references with `rg`.
-- Check theme variables exist and are coherent with selected preset.
-- Check module structure has two levels (`1` main sections and `1.1` subsections).
-- Check structure tree indentation clearly separates level-2 from level-1.
-- Check structure tree highlights active section while scrolling.
-- Check print button exists in each module and opens browser print dialog.
-- Check `@media print` styles hide navigation controls and preserve readability.
-- Ensure request is fully applied before stopping.
+## 4) Handle Structure and Assets Carefully
+- Preserve valid internal links, navigation, and stable paths.
+- Keep figure-to-caption mapping correct.
+- Use meaningful captions and avoid placeholder text.
+- Place assets in the project's existing asset structure.
+- Avoid unnecessary duplication of equivalent assets.
 
-## 5) Publish
-- Publish after each accepted change:
-  - `scripts/publish-site.sh https://github.com/<USER>/<PUBLIC-SITE-REPO>.git main`
-- Report what changed and where.
+## 5) Validate Before Stopping
+- Check the requested content exists after the edit.
+- Check for broken HTML, broken links, or missing assets.
+- Check that structure remains coherent with neighboring modules/pages.
+- Check that no source-process phrasing remains unless intentionally requested.
+- Check that theme/layout behavior remains consistent where applicable.
+- Ensure the request is fully applied before stopping.
+
+## Default Website Variant
+
+If the project follows the current website pattern:
+- content usually lives in `site/`
+- modules usually live in `site/chapters/chapter-XX.html`
+- source chapters may live in `resources/chXX.docx`
+- figures may live under `site/assets/images/`
+
+In that variant:
+- keep module navigation coherent
+- preserve the in-module structure tree if present
+- keep anchor targets visible below sticky UI
+- keep print behavior local-only and static-host compatible
+- keep the selected theme consistent
 
 ## Quick Command Pattern
-- Search text: `rg -n "text" site/chapters/chapter-*.html`
-- Verify links/images: `rg -n "chapter-08|fig-08|https://..." site/index.html site/chapters/*.html`
-- Publish: `scripts/publish-site.sh <public-repo-url> main`
+- Search text: `rg -n "text" site/chapters/ site/`
+- Search unwanted source references: `rg -n "in this section|in this chapter|in this book|resources|extracted from" site/`
+- Verify links/images: `rg -n "chapter-|assets/images|href=|src=" site/index.html site/chapters/*.html`
