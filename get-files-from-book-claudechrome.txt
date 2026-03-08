@@ -1,0 +1,5 @@
+Navigate to the chapter URL (pattern: https://learning.oreilly.com/library/view/[book]/[isbn]/OEBPS/Text/[XX].htm)
+Close the right navbar by clicking the X icon
+Enter focus mode with Shift+F
+Click the page, then Ctrl+A to select all text and Ctrl+C to copy to clipboard
+Tell me when done so I can paste it into a .docx file
