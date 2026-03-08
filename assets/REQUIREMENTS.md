@@ -1,87 +1,115 @@
-# Course Build Requirements (Simple)
+# Course Material Requirements
+
+Use these requirements as the baseline quality bar for educational content projects.
+
+Adapt them to the user's request, but do not silently drop clarity, structure, or consistency.
 
 ## Objective
-Create a study-ready website in English from chapter `.docx` files in `resources/`, with clear modules, sectioned content, figures, and navigation.
+
+Create or maintain study-ready course materials from source content such as `.docx`, notes, syllabi, or existing lesson pages.
+
+The output may be:
+- a full static course site
+- one or more lesson or module pages
+- supporting pages such as labs, references, bibliography, or summaries
+- revised existing content that needs a consistent instructional standard
 
 ## Inputs
-- `resources/chXX.docx` (one file per module/chapter)
-- Optional syllabus `.docx` for module order and scope
 
-## Mandatory Output
-- Static site under `site/`
-- Home page with modules, labs, bibliography, sitography
-- One HTML page per module under `site/chapters/`
-- Assets under `site/assets/` (CSS, JS, images)
-- Theme system with preset selection
+Possible inputs include:
+- chapter files such as `resources/chXX.docx`
+- syllabus or outline files
+- existing site files under `site/`
+- HTML, Markdown, notes, or mixed draft material
+- explicit user constraints for tone, audience, depth, or delivery format
+
+## Output Standard
+
+Unless the user specifies otherwise, the output should be:
+- English
+- neutral and study-oriented
+- concise but not shallow
+- standalone, without source-structure wording that breaks when read in isolation
+- consistent with the rest of the course or project
 
 ## Content Rules
-- Language: English only.
-- Tone: neutral, study-oriented, concise (not conversational).
-- Text must be standalone:
-  - Remove references like "in this section", "in this book", "as discussed earlier".
-  - Remove references to extraction process or `resources` files.
-- Summarize lightly, but keep enough detail for study.
-- Every module must include:
-  - Title with module number prefix (`MXX - <Title>`)
-  - Two-level numbered structure:
-    - Level 1 main sections (`1`, `2`, `3`, ...)
-    - Level 2 subsections (`1.1`, `1.2`, `2.1`, ...)
-  - Meaningful short section titles (not first words of paragraph)
-  - A `Key takeaways` box at the end
 
-## Figures Rules
-- Import all relevant figures from source chapter.
-- Number captions as `MXX.YY` (module.figure).
-- Use meaningful caption text (never generic "Study figure").
-- Figures must stay inside the correct section context.
-- Click behavior:
-  - Click image => full-browser zoom
-  - No caption shown in zoom view
-  - Click again => close zoom and return to text
+- Remove structural references such as "in this section", "in this chapter", "in this book", or "as discussed earlier" unless they are intentionally needed.
+- Remove references to extraction pipelines or raw source provenance unless the user explicitly wants them.
+- Prefer meaningful titles, section labels, and summaries over copied source wording.
+- Preserve enough explanatory depth to support study use.
+- Keep terminology consistent across artifacts.
+- Avoid conversational filler and generic educational fluff.
 
-## UX Rules
-- Full HTML navigation between modules.
-- Keep home top navigation compact: use section anchors (`Modules`, `Labs`, `References`) instead of listing all modules in the top bar.
-- Add arrow cues in module navigation and module link lists to make progression explicit.
-- In-module structure tree must indent level-2 entries under their level-1 parent.
-- In-module structure tree must highlight the section currently in view while scrolling.
-- Anchor jumps from structure/navigation must keep headings fully visible below sticky UI (use adequate vertical offset).
-- Structure tree must be rendered as an internal left frame in the content layout (not as fixed overlay).
-- Structure tree frame must never overlap breadcrumb/header/top navigation.
-- Back-to-top button on pages.
-- Print button/icon on every module page.
-- Print behavior: click print button => open browser print dialog (`window.print()` via local JavaScript).
-- Add print-optimized CSS (`@media print`) to hide navigation controls and keep printed content readable.
-- Readable layout and pleasant CSS.
-- Minimal dependencies, GitHub Pages compatible.
+## Structure Rules
+
+For module-like outputs, prefer:
+- a clear title
+- visible section hierarchy
+- coherent navigation or progression
+- a recap, summary, or key takeaways block when appropriate for the project pattern
+
+If the project already uses numbered sections, preserve and normalize them.
+If the project already uses a two-level hierarchy, keep it consistent.
+
+Do not collapse well-structured material into flat prose.
+
+## Figures and Media Rules
+
+When figures or media are part of the task:
+- preserve the correct mapping between each figure and its caption
+- use meaningful captions, not placeholders
+- keep figures in the right section context
+- store assets in the project's existing asset structure
+- verify paths from consuming pages
+- avoid duplicating equivalent assets unnecessarily
+
+If the project already uses a caption numbering convention such as `MXX.YY`, preserve it.
+
+## Website Variant Rules
+
+When the project is a static course site, require:
+- consistent navigation between modules or pages
+- compact and readable top-level navigation
+- clean asset organization under the site structure
+- theme consistency across the site
+- static-host compatible behavior with minimal dependencies
+
+When present, also preserve:
+- in-module structure trees
+- sticky-header-safe anchor behavior
+- print-friendly output
+- references, labs, bibliography, and sitography sections
 
 ## Theme Rules
-- Support at least 4 predefined themes (recommended 5):
-  - `light`
-  - `dark`
-  - `colorful`
-  - `high-contrast`
-  - `warm` (or `minimal`)
-- Use CSS variables for theme tokens (background, surface, text, accent, border).
-- Keep one active default theme per course; default is `light` unless explicitly changed.
-- Ensure accessibility and readability across all presets.
 
-## Home Page Rules
-- Module index with links.
-- Labs section with title + description + links.
-- Bibliography + Sitography sections.
-- Footer note: selected/edited educational content.
+If the project uses themes:
+- prefer CSS variables for reusable design tokens
+- keep layout behavior consistent across themes
+- keep text and link contrast readable
+- use the project default theme unless the user asks for a different one
 
-## Quality Gate (before publish)
-- No incomplete sentences.
-- No broken references or missing images.
-- No Italian text in generated English pages.
-- No references to book internal structure unless required by learning flow.
-- Module nav chain is correct (`prev/current/next`).
-- Module structure has both levels (`1` and `1.1`) and is not flat.
-- In-module structure tree shows visual indentation for level 2 under level 1.
-- In-module structure tree highlights the active section while reading.
-- Anchor jumps do not hide headings under sticky navigation/header.
-- Structure tree is in an internal left frame and does not overlap breadcrumb/header.
-- Print button works on each module.
-- Printed output keeps section headings/figures readable and excludes UI controls (nav, back-to-top, print button).
+For the current default website variant, reuse the presets in `THEMES.md`.
+
+## Quality Gate
+
+Before considering the task complete, verify the relevant subset of:
+- no incomplete or broken sentences
+- no broken links or missing assets
+- no accidental language mixing
+- no leftover source-process wording
+- no figure/caption mismatch
+- structure is consistent with neighboring artifacts
+- navigation still works
+- theme/layout remains coherent
+- requested scope is fully delivered
+
+## Current Default Variant
+
+For the currently established pattern in this skill:
+- source chapters may live in `resources/chXX.docx`
+- output pages may live in `site/chapters/`
+- shared assets may live in `site/assets/`
+- the final delivery may be a GitHub Pages compatible static site
+
+Treat this as the default implementation variant, not as the only allowed output form.
