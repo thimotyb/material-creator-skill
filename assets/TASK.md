@@ -22,6 +22,7 @@ Copy this file for each course project, then adapt the sections that matter.
 ## Phase 2 - Content Mapping
 - [ ] Build the module/lesson list from syllabus or source files
 - [ ] Map each source item to a destination artifact
+- [ ] Update `course-structure.md` with modules, outputs, and source mappings
 - [ ] Identify missing material, weak sections, or unclear extraction points
 - [ ] Confirm naming conventions for modules, sections, and assets
 
@@ -61,6 +62,7 @@ Repeat for each target artifact:
 ## Default Website Variant
 
 If the project uses the current `resources/` + `site/` workflow:
+- [ ] Keep `course-structure.md` as the canonical module/source map
 - [ ] Map `resources/chXX.docx` to module pages
 - [ ] Update `site/chapters/` outputs
 - [ ] Update `site/index.html` module/reference/lab links

@@ -208,10 +208,33 @@ TASK_MD = """# Project Task Tracker
 - Theme: {theme}
 
 ## Next steps
+- [ ] Update `course-structure.md`
 - [ ] Add source files under `resources/`
 - [ ] Update `site/index.html`
 - [ ] Replace the example module in `site/chapters/chapter-01.html`
 - [ ] Add additional modules as needed
+"""
+
+
+COURSE_STRUCTURE_MD = """# Course Structure
+
+- Course name: {course_title}
+- Audience:
+- Language: English
+- Output format: static course site
+- Theme: {theme}
+
+## Modules
+
+| Module | Title | Output Artifact | Source Files | Notes |
+| --- | --- | --- | --- | --- |
+| M01 | Example module | `site/chapters/chapter-01.html` | `resources/ch01.docx` | Replace with actual module mapping |
+
+## Source Inventory
+
+| Source File | Type | Used In Modules | Notes |
+| --- | --- | --- | --- |
+| `resources/ch01.docx` | chapter | `M01` | Add the real source file once available |
 """
 
 
@@ -220,6 +243,13 @@ def write_file(path: Path, content: str, force: bool) -> None:
         raise FileExistsError(f"Refusing to overwrite existing file: {path}")
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
+
+
+def render_template(template: str, replacements: dict[str, str]) -> str:
+    rendered = template
+    for key, value in replacements.items():
+        rendered = rendered.replace("{" + key + "}", value)
+    return rendered
 
 
 def parse_args() -> argparse.Namespace:
@@ -259,8 +289,9 @@ def main() -> int:
             ("site/assets/js/site.js", SITE_JS),
             ("site/chapters/chapter-01.html", MODULE_HTML),
             ("task-tracker.md", TASK_MD),
+            ("course-structure.md", COURSE_STRUCTURE_MD),
         ]:
-            write_file(root / rel_path, template.format(**replacements), args.force)
+            write_file(root / rel_path, render_template(template, replacements), args.force)
 
         for rel_dir in ["resources", "site/assets/images", "site/assets/downloads"]:
             (root / rel_dir).mkdir(parents=True, exist_ok=True)

@@ -45,6 +45,7 @@ Depending on the task, produce one or more of:
 - revised study text for modules or sections
 - labs, references, bibliography, sitography, summaries, and key takeaways
 - reusable content structure that stays coherent across the whole course
+- a main course structure file that maps modules to their source materials
 
 When the project already uses the website pattern from this skill, keep:
 - one module per page
@@ -71,7 +72,10 @@ Follow this order unless the user asks for a smaller scoped edit.
 5. Apply the course standard.
    Keep naming, section hierarchy, navigation, captions, and UI patterns consistent with the rest of the course.
 
-6. Validate before stopping.
+6. Update the course structure map.
+   Keep the main file with modules, outputs, and source mappings aligned with the actual project state.
+
+7. Validate before stopping.
    Check content integrity, structure, links, assets, and consistency with the project conventions.
 
 ## Course Content Standard
@@ -146,6 +150,7 @@ Before stopping, verify the relevant subset of:
 
 Use the bundled assets instead of re-inventing the workflow:
 - `assets/AGENTS.md` for the step-by-step editing workflow
+- `assets/COURSE_STRUCTURE.md` for the canonical module/source mapping file
 - `assets/REQUIREMENTS.md` for the baseline website/content requirements
 - `assets/TASK.md` for project tracking
 - `assets/THEMES.md` for reusable theme presets

@@ -31,6 +31,22 @@ Unless the user specifies otherwise, the output should be:
 - concise but not shallow
 - standalone, without source-structure wording that breaks when read in isolation
 - consistent with the rest of the course or project
+- tracked through a main course structure file that maps modules to their source materials
+
+## Main Structure File
+
+Each project must have a main file that defines:
+- the course module structure
+- the output artifact for each module
+- the source files used by each module
+
+For the default website variant, use `course-structure.md` at the project root.
+
+This file is the canonical map for planning and maintenance. Keep it updated when:
+- modules are added, merged, split, or renamed
+- source files change
+- one module uses multiple sources
+- one source feeds multiple modules
 
 ## Content Rules
 
